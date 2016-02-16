@@ -1,0 +1,15 @@
+﻿<Window x:Class="Passguard_Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Button Content="Encrypt" HorizontalAlignment="Left" Margin="321,10,0,0" VerticalAlignment="Top" Width="89" Background="#FF2D8360" Foreground="#DDFFFFFF" BorderBrush="#FF2D8360"/>
+        <StackPanel Name="ImagePanel" Drop="ImagePanel_Drop" AllowDrop="true" Margin="10,10,221,10" Background="#FFEEEBEB"/>
+        <Label Content="Drag and drop files here to encrypt/decrypt" HorizontalAlignment="Left" Margin="21,150,0,0" VerticalAlignment="Top" FontFamily="Garamond" FontStyle="Italic" FontWeight="ExtraLight"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="432,10,0,0" VerticalAlignment="Top" Width="75"/>
+    </Grid>
+</Window>
