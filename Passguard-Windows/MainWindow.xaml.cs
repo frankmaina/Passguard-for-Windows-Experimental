@@ -21,7 +21,7 @@ namespace Passguard_Windows
     public partial class MainWindow : Window
     {
         public static String file;
-
+        public static string[] files;
 
         public MainWindow()
         {
@@ -36,7 +36,8 @@ namespace Passguard_Windows
             {
                 // the user can drag in more than one file so wqe only need to use the first selected
                 //file
-                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                files = (string[])e.Data.GetData(DataFormats.FileDrop);
+
                 //array files holds the paths to the files
                 //first declare file types that are not allowed
                 string[] unallowed_files = {
@@ -54,20 +55,29 @@ namespace Passguard_Windows
                     {
                         //file type is forbidden
                         MessageBox.Show("File type "+unallowed_file+" is forbidden.");
+
+                        //empty file holder
                         files[0] = null;
                     }
 
                 }
                 if (files[0]!= null){
 
-                //update UI showing file has been recieved
-                noticeString.Content = "File: "+Path.GetFileName(files[0]) + " has been received.";
-                //close uploading
-                ImagePanel.IsEnabled = false;
-                noticeString.FontSize = 15;
-                //we now read the file to base64 encoding
-                Byte[] bytes = File.ReadAllBytes(files[0]);
-                file = Convert.ToBase64String(bytes);
+                    //update UI showing file has been recieved
+                    noticeString.Content = "File: "+Path.GetFileName(files[0]) + " has been received.";
+
+                    //close uploading
+                    ImagePanel.IsEnabled = false;
+                    noticeString.FontSize = 15;
+
+                    //we now read the file to base64 encoding
+                    Byte[] bytes = File.ReadAllBytes(files[0]);
+                    file = Convert.ToBase64String(bytes);
+
+                    /*
+                     * Do encryption here
+                     * 
+                     */
 
                 }
             }
@@ -80,7 +90,23 @@ namespace Passguard_Windows
                 MessageBox.Show("Nothing to encrypt");
             }
         }
+        
 
+        private void reset_uploading(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Massive error here. Stay away ")
+            /*
+             * CAUTION: An unhandled exception of type 'System.StackOverflowException' ERROR
+            //empyt out files array
+            files[0] = null;
+
+            //update UI showing file has been recieved
+            noticeString.Content = this.Content;
+
+            //close uploading
+            ImagePanel.IsEnabled = true;
+            noticeString.FontSize = this.FontSize;*/
+        }
 
     }
 }

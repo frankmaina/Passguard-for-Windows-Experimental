@@ -15,5 +15,6 @@
         <StackPanel Name="ImagePanel" Drop="ImagePanel_Drop" AllowDrop="true" Margin="10,10,243,10" Background="#FFEEEBEB" Grid.RowSpan="2"/>
         <Label x:Name="noticeString" Content="Drag and drop files here to encrypt/decrypt" HorizontalAlignment="Left" Margin="48,145,0,0" VerticalAlignment="Top" FontFamily="Garamond" FontStyle="Italic" FontWeight="Bold" FontSize="14"/>
         <Button Content="Decrypt" HorizontalAlignment="Left" Margin="448,10,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button Content="Reset Uploading" Click="reset_uploading" HorizontalAlignment="Left" Margin="436,92,0,0" Grid.Row="1" VerticalAlignment="Top" Width="122" Background="#FF27879C" BorderBrush="#FF27879C" Height="21" FontSize="12"/>
     </Grid>
 </Window>
