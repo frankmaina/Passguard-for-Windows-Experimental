@@ -20,6 +20,8 @@ namespace Passguard_Windows
     /// </summary>
     public partial class MainWindow : Window
     {
+        String file;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -50,11 +52,13 @@ namespace Passguard_Windows
                 }
                 //we now read the file to base64 encoding
                 Byte[] bytes = File.ReadAllBytes(files[0]);
-                String file = Convert.ToBase64String(bytes);
+                file = Convert.ToBase64String(bytes);
                 
-                MessageBox.Show(file.ToString());
+               
 
             }
         }
+
+       
     }
 }
