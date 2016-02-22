@@ -3,13 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        FontFamily="Garamond"
 
-        Title="MainWindow" Height="344" Width="575.896">
+        Title="Passguard" Height="344" Width="575.896" MaxHeight="344" MaxWidth="575.896" MinHeight="344" MinWidth="575.896" ResizeMode="NoResize" Cursor="Arrow">
     <Grid Margin="0,0,2,0">
-        <Button Content="Encrypt" HorizontalAlignment="Left" Margin="350,10,0,0" VerticalAlignment="Top" Width="89" Background="#FF2D8360" Foreground="#DDFFFFFF" BorderBrush="#FF2D8360"/>
-        <StackPanel Name="ImagePanel" Drop="ImagePanel_Drop" AllowDrop="true" Margin="10,10,243,10" Background="#FFEEEBEB"/>
-        <Label Content="Drag and drop files here to encrypt/decrypt" HorizontalAlignment="Left" Margin="58,150,0,0" VerticalAlignment="Top" FontFamily="Garamond" FontStyle="Italic" FontWeight="ExtraLight"/>
-        <Button Content="Decrypt" HorizontalAlignment="Left" Margin="457,10,0,0" VerticalAlignment="Top" Width="84"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="96*"/>
+            <RowDefinition Height="61*"/>
+        </Grid.RowDefinitions>
+        <Button Content="Encrypt" HorizontalAlignment="Left" Margin="343,10,0,0" VerticalAlignment="Top" Width="89" Background="#FF2D8360" Foreground="#DDFFFFFF" BorderBrush="#FF2D8360"/>
+        <StackPanel Name="ImagePanel" Drop="ImagePanel_Drop" AllowDrop="true" Margin="10,10,243,10" Background="#FFEEEBEB" Grid.RowSpan="2"/>
+        <Label Content="Drag and drop files here to encrypt/decrypt" HorizontalAlignment="Left" Margin="77,150,0,0" VerticalAlignment="Top" FontFamily="Garamond" FontStyle="Italic" FontWeight="ExtraLight" FontSize="14"/>
+        <Button Content="Decrypt" HorizontalAlignment="Left" Margin="463,10,0,0" VerticalAlignment="Top" Width="84"/>
     </Grid>
 </Window>
