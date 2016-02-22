@@ -11,9 +11,9 @@
             <RowDefinition Height="96*"/>
             <RowDefinition Height="61*"/>
         </Grid.RowDefinitions>
-        <Button Content="Encrypt" HorizontalAlignment="Left" Margin="343,10,0,0" VerticalAlignment="Top" Width="89" Background="#FF2D8360" Foreground="#DDFFFFFF" BorderBrush="#FF2D8360"/>
+        <Button Content="Encrypt" Click="encrypt_Click"  HorizontalAlignment="Left" Margin="332,10,0,0" VerticalAlignment="Top" Width="100" Background="#FF2D8360" Foreground="#DDFFFFFF" BorderBrush="#FF2D8360"/>
         <StackPanel Name="ImagePanel" Drop="ImagePanel_Drop" AllowDrop="true" Margin="10,10,243,10" Background="#FFEEEBEB" Grid.RowSpan="2"/>
-        <Label Content="Drag and drop files here to encrypt/decrypt" HorizontalAlignment="Left" Margin="77,150,0,0" VerticalAlignment="Top" FontFamily="Garamond" FontStyle="Italic" FontWeight="ExtraLight" FontSize="14"/>
-        <Button Content="Decrypt" HorizontalAlignment="Left" Margin="463,10,0,0" VerticalAlignment="Top" Width="84"/>
+        <Label x:Name="noticeString" Content="Drag and drop files here to encrypt/decrypt" HorizontalAlignment="Left" Margin="48,145,0,0" VerticalAlignment="Top" FontFamily="Garamond" FontStyle="Italic" FontWeight="Bold" FontSize="14"/>
+        <Button Content="Decrypt" HorizontalAlignment="Left" Margin="448,10,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Window>
