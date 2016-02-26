@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.IO;
+using Microsoft.Win32;
+
+
 
 namespace Passguard_Windows
 {
@@ -22,6 +25,9 @@ namespace Passguard_Windows
     {
         public static String file;
         public static string[] files;
+        public static string file_name;
+        public static string file_extension;
+
 
         public MainWindow()
         {
@@ -50,8 +56,8 @@ namespace Passguard_Windows
                 //we then check for the file extension
                 foreach (string unallowed_file in unallowed_files)
                 {
-                    string extension = Path.GetExtension(files[0]);
-                    if (extension == unallowed_file)
+                    file_extension = Path.GetExtension(files[0]);
+                    if (file_extension == unallowed_file)
                     {
                         //file type is forbidden
                         MessageBox.Show("File type "+unallowed_file+" is forbidden.");
@@ -68,17 +74,13 @@ namespace Passguard_Windows
 
                     //close uploading
                     ImagePanel.IsEnabled = false;
-                    noticeString.FontSize = 15;
+                    noticeString.FontSize = 9;
 
                     //we now read the file to base64 encoding
                     Byte[] bytes = File.ReadAllBytes(files[0]);
                     file = Convert.ToBase64String(bytes);
 
-                    /*
-                     * Do encryption here
-                     * 
-                     */
-
+                    
                 }
             }
         }
@@ -89,12 +91,43 @@ namespace Passguard_Windows
             {
                 MessageBox.Show("Nothing to encrypt");
             }
+            else
+            {
+
+                //start encryption process
+                Passguard_Windows.Cryptlib.CryptLib _crypt = new Passguard_Windows.Cryptlib.CryptLib();
+
+                String iv = Passguard_Windows.Cryptlib.CryptLib.GenerateRandomIV(16); //16 bytes = 128 bits
+                string key = Passguard_Windows.Cryptlib.CryptLib.getHashSha256("password", 31); //32 bytes = 256 bits
+                String cypherText = _crypt.encrypt(file, key, iv);
+                
+                try
+                {
+                    file_name = Path.GetFileNameWithoutExtension(files[0]); 
+                    MessageBox.Show(file_name + " has been successfully encrypted!");
+                    
+                    
+                    SaveFileDialog dialog = new SaveFileDialog()
+                    {
+                        Filter = "All(*.*)|*"
+                    };
+
+                    if (dialog.ShowDialog() == true)
+                    {
+                         File.WriteAllText(file_name+file_extension, cypherText);
+                    }
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.ToString());
+                }
+            }
         }
         
 
         private void reset_uploading(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Massive error here. Stay away ")
+            MessageBox.Show("Massive error here. Stay away ");
             /*
              * CAUTION: An unhandled exception of type 'System.StackOverflowException' ERROR
             //empyt out files array
